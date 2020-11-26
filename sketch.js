@@ -53,6 +53,16 @@ function draw()
       ground.x = ground.width/2;
     }
   
+  if(monkey.isTouching(obstacleGroup))
+    {
+      ground.velocityX = 0;
+      banana.velocityX = 0;
+      obstacle.velocityX = 0;
+      banana.lifetime = -1;
+      obstacle.lifetime = -1;
+      FoodGroup.destroyEach(); 
+    }
+  
   
   spawnBanana();
   spawnObstacles();
@@ -76,6 +86,7 @@ function spawnBanana()
       banana.scale = 0.08;
       banana.velocityX = -6;
       banana.lifetime = 100;
+      FoodGroup.add(banana);
     }
 }
 
@@ -88,6 +99,7 @@ function spawnObstacles()
       obstacle.velocityX = -6;
       obstacle.scale = 0.2;
       obstacle.lifetime = 150;
+      obstacleGroup.add(obstacle);
     }
 }
 
